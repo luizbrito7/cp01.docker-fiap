@@ -2,6 +2,8 @@
 
 Este projeto demonstra a criação e execução de um container Docker para um servidor web Nginx simples, utilizando um script de automação (`script.sh`) para facilitar o processo de build e run.
 
+![image 28](../docs/1-lab.png)
+
 ## Como Usar
 
 > [!NOTE]
