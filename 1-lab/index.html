@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Checkpoint 01</title>
+	<style>
+		@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap");
+
+		:root {
+			--bg: #0f1113;
+			--surface: #14181c;
+			--surface-2: #1a1f24;
+			--line: #2f363d;
+			--text: #f2f4f7;
+			--muted: #b7bec8;
+			--chip: #f2f4f7;
+			--chip-text: #161a1f;
+			--shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+			--font: "Manrope", "Segoe UI", sans-serif;
+			--fs-900: clamp(1.2rem, 1.9vw, 1.9rem);
+			--fs-700: clamp(1.35rem, 2vw, 2.05rem);
+			--fs-500: 1rem;
+			--fs-400: 0.95rem;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 24px;
+			color: var(--text);
+			font-family: var(--font);
+			background: linear-gradient(180deg, #101214 0%, #0d0f11 100%);
+		}
+
+		.page {
+			width: min(100%, 980px);
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.page-header {
+			padding: 14px 18px;
+			border: 1px solid var(--line);
+			border-radius: 12px;
+			background: #13171b;
+		}
+
+		.page-title {
+			margin: 0;
+			font-size: var(--fs-900);
+			font-weight: 800;
+			line-height: 1.15;
+			color: var(--text);
+			text-align: left;
+			text-wrap: balance;
+			letter-spacing: -0.01em;
+		}
+
+		.card {
+			width: 100%;
+			border: 1px solid var(--line);
+			border-radius: 12px;
+			background: var(--surface);
+			box-shadow: var(--shadow);
+			overflow: hidden;
+		}
+
+		.logos-wrap {
+			padding: 24px;
+		}
+
+		.logos-title {
+			margin: 0 0 14px;
+			font-size: var(--fs-400);
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+			color: var(--muted);
+		}
+
+		.logos-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 14px;
+		}
+
+		.logo-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			min-height: 152px;
+			padding: 18px;
+			border: 1px solid var(--line);
+			border-radius: 10px;
+			background: var(--surface-2);
+		}
+
+		.logo-item img {
+			width: min(160px, 80%);
+			height: 64px;
+			object-fit: contain;
+		}
+
+		.logo-item span {
+			font-size: var(--fs-500);
+			font-weight: 600;
+			color: var(--text);
+		}
+
+		.header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 28px 32px 18px;
+		}
+
+		.header h2 {
+			margin: 0;
+			font-size: var(--fs-700);
+			font-weight: 800;
+			line-height: 1.1;
+			color: var(--text);
+			letter-spacing: -0.01em;
+		}
+
+		.badge {
+			display: grid;
+			place-items: center;
+			width: 54px;
+			height: 54px;
+			border-radius: 12px;
+			background: #f5f5f5;
+			color: #121212;
+			border: 1px solid #d8dde3;
+			font-size: 1.7rem;
+			font-weight: 700;
+			box-shadow: none;
+		}
+
+		.table-wrap {
+			padding: 0 20px 20px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			overflow: hidden;
+			border-radius: 10px;
+			border: 1px solid var(--line);
+			background: var(--surface-2);
+		}
+
+		thead th {
+			padding: 20px 18px;
+			text-align: left;
+			font-size: var(--fs-500);
+			font-weight: 700;
+			color: #f8fafc;
+			background: #242a30;
+		}
+
+		tbody td {
+			padding: 22px 18px;
+			font-size: var(--fs-500);
+			font-weight: 500;
+			color: var(--text);
+			border-top: 1px solid var(--line);
+			background: #171b20;
+		}
+
+		tbody tr:nth-child(even) td {
+			background: #1b2026;
+		}
+
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			min-height: 38px;
+			padding: 8px 16px;
+			border-radius: 999px;
+			font-weight: 700;
+			color: var(--chip-text);
+			background: var(--chip);
+			border: 1px solid #d8dde3;
+			white-space: nowrap;
+		}
+
+		@media (max-width: 720px) {
+			body {
+				padding: 16px;
+			}
+
+			.page-header {
+				padding: 14px 16px;
+			}
+
+			.page-title {
+				text-align: center;
+
+			}
+
+			.logos-wrap {
+				padding: 16px;
+			}
+
+			.logos-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.header {
+				padding: 22px 20px 14px;
+			}
+
+			.table-wrap {
+				padding: 0 12px 12px;
+			}
+
+			table,
+			thead,
+			tbody,
+			tr,
+			th,
+			td {
+				display: block;
+			}
+
+			thead {
+				display: none;
+			}
+
+			tbody tr {
+				margin-bottom: 12px;
+				border-radius: 18px;
+				overflow: hidden;
+			}
+
+			tbody td {
+				padding: 14px 16px;
+			}
+
+			tbody td::before {
+				content: attr(data-label);
+				display: block;
+				margin-bottom: 6px;
+				font-size: 0.82rem;
+				font-weight: 700;
+				color: var(--muted);
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="page">
+		<header class="page-header">
+			<h1 class="page-title">Checkpoint - Cloud Native Development (Microservices e APIs)</h1>
+		</header>
+
+		<section class="card">
+			<div class="logos-wrap">
+				<h2 class="logos-title">Tecnologias</h2>
+				<div class="logos-grid">
+					<div class="logo-item">
+						<img src="https://cdn.simpleicons.org/docker/2496ed" alt="Logo Docker">
+						<span>Docker</span>
+					</div>
+					<div class="logo-item">
+						<img src="https://cdn.simpleicons.org/nginx/009639" alt="Logo Nginx">
+						<span>Nginx</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="card">
+			<div class="header">
+				<h2>Dados do Aluno</h2>
+				<div class="badge">✓</div>
+			</div>
+
+			<div class="table-wrap">
+				<table>
+					<thead>
+						<tr>
+							<th>Aluno</th>
+							<th>RM</th>
+							<th>Curso</th>
+							<th>Faculdade</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-label="Aluno">Luiz Gustavo Goncalves Brito</td>
+							<td data-label="RM">562192</td>
+							<td data-label="Curso">Computacao em Nuvem</td>
+							<td data-label="Faculdade"><span class="pill">FIAP</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
