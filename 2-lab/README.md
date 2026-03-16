@@ -18,15 +18,6 @@ Crie o arquivo `.env` a partir do exemplo:
 cp .env.example .env
 ```
 
-Edite o `.env` com as suas credenciais:
-
-```env
-MYSQL_ROOT_PASSWORD=sua_senha
-MYSQL_DATABASE=tasks_db
-DB_USER=root
-DB_PASS=sua_senha
-```
-
 ### Execução
 
 ```bash
