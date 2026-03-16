@@ -24,7 +24,7 @@ O script irá automaticamente:
 - Iniciar um container a partir da imagem criada.
 - Exibir o endereço de acesso.
 
-Após a execução, o servidor Nginx estará disponível em [http://localhost:8080](http://localhost:8080).
+Após a execução, o servidor Nginx estará disponível em [http://localhost:3000](http://localhost:3000).
 
 ## Comandos Docker no Script
 
@@ -43,14 +43,14 @@ O `script.sh` automatiza os seguintes comandos:
 | :--- | :--- | :--- |
 | `-d` | **Detached Mode**: executa o container em segundo plano. | Libera o terminal para outros comandos enquanto o container roda. |
 | `--name cp01-lab1` | Define um nome para o container. | Facilita o gerenciamento (parar, remover, ver logs) usando um nome fixo. |
-| `-p 8080:8080` | Mapeia a porta 8080 do host para a 8080 do container. | Permite acessar o Nginx (que roda na porta 8080 do container) através de `localhost:8080`. |
+| `-p 3000:3000` | Mapeia a porta 3000 do host para a 3000 do container. | Permite acessar o Nginx (que roda na porta 3000 do container) através de `localhost:3000`. |
 | `--mount` | Monta um arquivo ou diretório do host no container. | Para refletir alterações no `index.html` local imediatamente, sem precisar reconstruir a imagem. |
 | `readonly` | Torna o `mount` somente leitura. | Garante que o container não possa modificar o arquivo `index.html` no host. |
 
 ## Dockerfile
 
 O `Dockerfile` utiliza uma imagem base já existente (`luandi09/cp01-lab01:v1.0`) que contém o Nginx.
-- `EXPOSE 8080`: Informa que o container expõe a porta 8080.
+- `EXPOSE 3000`: Informa que o container expõe a porta 3000.
 - `HEALTHCHECK`: Define um comando para verificar a saúde do container. A cada 30 segundos, ele tenta acessar a página inicial do Nginx. Se falhar 3 vezes seguidas, o container é marcado como "unhealthy".
 
 ## Análise de Vulnerabilidades com Trivy
